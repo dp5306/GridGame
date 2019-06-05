@@ -37,7 +37,7 @@ namespace GridGame
             // Setting location of the bombs
             for (var i = 0; i < bombs.Length; i++)
             {
-                bombs[i] = new GridElement(i+1, r.Next(1, 10), r.Next(0, 10), 0);
+                bombs[i] = new GridElement(i + 1, r.Next(1, 10), r.Next(0, 10), 0);
             }
 
             drawBombs();

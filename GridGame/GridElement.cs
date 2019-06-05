@@ -43,7 +43,7 @@ namespace GridGame
             return this.id;
         }
 
-    public void addCol(int toAdd)
+        public void addCol(int toAdd)
         {
             this.column = Math.Max(Math.Min(this.column + toAdd, 9), 0);
         }
@@ -68,7 +68,7 @@ namespace GridGame
                 test.Source = bmp;
                 MainGrid.Children.Add(test);
             }
-            
+
             Grid.SetColumn(test, column);
             Grid.SetRow(test, row);
         }
