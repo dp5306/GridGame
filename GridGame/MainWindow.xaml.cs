@@ -32,9 +32,7 @@ namespace GridGame
             id++;
             bombs = new GridElement[15];
             player = new GridElement(0, 0, r.Next(0, 10), 1);
-
-
-
+            
             // Setting location of the bombs
             for (var i = 0; i < bombs.Length; i++)
             {
@@ -100,6 +98,7 @@ namespace GridGame
             {
                 File.AppendAllText(@"Logs.txt", id.ToString() + "|0|" + time.ToString() + "|-1\n");
                 StartGame();
+                return;
             }
 
             foreach (GridElement x in bombs)
@@ -108,6 +107,7 @@ namespace GridGame
                 {
                     File.AppendAllText(@"Logs.txt", id.ToString() + "|0|" + time.ToString() + "|" + x.getId() + "\n");
                     StartGame();
+                    return;
                 }
             }
 
@@ -115,6 +115,7 @@ namespace GridGame
             {
                 File.AppendAllText(@"Logs.txt", id.ToString() + "|1|" + time.ToString() + "|-1\n");
                 StartGame();
+                return;
             }
         }
 
