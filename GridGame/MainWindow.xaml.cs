@@ -34,6 +34,7 @@ namespace GridGame
             player = new GridElement(0, 0, r.Next(0, 10), 1);
 
 
+
             // Setting location of the bombs
             for (var i = 0; i < bombs.Length; i++)
             {
@@ -94,11 +95,17 @@ namespace GridGame
         // Check if game is over
         private void checkEndCondition()
         {
+            long time = DateTimeOffset.Now.ToUnixTimeMilliseconds() - milis;
+            if (time > 60000)
+            {
+                File.AppendAllText(@"Logs.txt", id.ToString() + "|0|" + time.ToString() + "|-1\n");
+                StartGame();
+            }
+
             foreach (GridElement x in bombs)
             {
                 if (x.checkCollision(player))
                 {
-                    long time = DateTimeOffset.Now.ToUnixTimeMilliseconds() - milis;
                     File.AppendAllText(@"Logs.txt", id.ToString() + "|0|" + time.ToString() + "|" + x.getId() + "\n");
                     StartGame();
                 }
@@ -106,7 +113,6 @@ namespace GridGame
 
             if (player.getColumn() == 9)
             {
-                long time = DateTimeOffset.Now.ToUnixTimeMilliseconds() - milis;
                 File.AppendAllText(@"Logs.txt", id.ToString() + "|1|" + time.ToString() + "|-1\n");
                 StartGame();
             }
